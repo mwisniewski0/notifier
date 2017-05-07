@@ -51,7 +51,8 @@ func (man *manager) run() {
       for index, timeTillNextCheck := range(timesTillNextCheck) {
         if timeTillNextCheck <= 0 {
           // TODO: fix the below
-          go man.subscriptions[index].Check(man.sender)
+          // Below should be a goroutine
+          man.subscriptions[index].Check(man.sender)
           lastChecked[index] = now
         }
       }
